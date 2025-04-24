@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert_author_table" author="Daniil Molchanov">
+        <preConditions onFail="HALT">
+            <and>
+                <tableExists tableName="author"/>
+                <tableExists tableName="position"/>
+            </and>
+        </preConditions>
+        <insert tableName="author">
+            <column name="id" value="ISO_639-1" />
+            <column name="name" value="Иван" />
+            <column name="lastname" value="Иванов" />
+            <column name="surname" value="Иванович" />
+            <column name="position_id" value="7432234555" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="ISO_965-44" />
+            <column name="name" value="Наталья" />
+            <column name="lastname" value="Сидорова" />
+            <column name="surname" value="Николаевна" />
+            <column name="position_id" value="3676545567" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="ISO_139-5" />
+            <column name="name" value="Перт" />
+            <column name="lastname" value="Петров" />
+            <column name="surname" value="Петрович" />
+            <column name="position_id" value="6575677888" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="ISO_8568-51" />
+            <column name="name" value="Ирина" />
+            <column name="lastname" value="Плюшкина" />
+            <column name="surname" value="NONE" />
+            <column name="position_id" value="7432234555" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

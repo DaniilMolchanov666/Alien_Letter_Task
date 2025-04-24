@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert_title_table" author="Daniil Molchanov">
+        <preConditions onFail="HALT">
+            <tableExists tableName="title"/>
+        </preConditions>
+        <insert tableName="title">
+            <column name="code" value="A1" />
+            <column name="description" value="Официальное письмо марсианам от жителей Земли" />
+            <column name="theme" value="Добыча полезных ископаемых" />
+        </insert>
+        <insert tableName="title">
+            <column name="code" value="A2" />
+            <column name="description" value="Официальное письмо народу Татуина от землян" />
+            <column name="theme" value="Озеленение пустыни" />
+        </insert>
+        <insert tableName="title">
+            <column name="code" value="A3" />
+            <column name="description" value="Официальное письмо воганам от жителей Земли" />
+            <column name="theme" value="Расширение межзвездной навигации" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

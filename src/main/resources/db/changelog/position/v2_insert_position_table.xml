@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert_position_table" author="Daniil Molchanov">
+        <preConditions onFail="HALT">
+            <tableExists tableName="position"/>
+        </preConditions>
+        <insert tableName="position">
+            <column name="id" value="7432234555" />
+            <column name="position_name" value="Старший научный сотрудник по добыче полезных ископаемых" />
+        </insert>
+        <insert tableName="position">
+            <column name="id" value="3676545567" />
+            <column name="position_name" value="Директор департамента озеленения пустынь" />
+        </insert>
+        <insert tableName="position">
+            <column name="id" value="6575677888" />
+            <column name="position_name" value="Главный инженер по строительству межзвездных автострад" />
+        </insert>
+        <insert tableName="position">
+            <column name="id" value="9655677677" />
+            <column name="position_name" value="Руководитель отдела взаимодействия с внеземными цивилизациями" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
