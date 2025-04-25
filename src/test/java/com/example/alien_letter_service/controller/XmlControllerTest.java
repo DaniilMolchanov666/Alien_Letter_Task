@@ -1,6 +1,7 @@
 package com.example.alien_letter_service.controller;
 
 import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
+import com.example.alien_letter_service.entity.Title;
 import com.example.alien_letter_service.service.XmlLetterConverterService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -33,7 +36,16 @@ class XmlControllerTest {
     @DisplayName("Успешная генерация письма - должен вернуть имя шаблона и добавить атрибуты в модель")
     void getLetterTest() {
         // Arrange
-        FormattedAlienLetterDto expectedDto = new FormattedAlienLetterDto();
+        FormattedAlienLetterDto expectedDto = FormattedAlienLetterDto.builder()
+                .address("Address")
+                .uid("Uid")
+                .title(new Title())
+                .authors(List.of())
+                .createdAt("now")
+                .listOfParagraphs(List.of())
+                .phone("123456789")
+                .build();
+
         when(letterConverterService.getFormattedAlienLetterDto()).thenReturn(expectedDto);
 
         // Act

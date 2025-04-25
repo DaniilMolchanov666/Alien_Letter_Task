@@ -1,6 +1,7 @@
 package com.example.alien_letter_service.service;
 
 import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
+import com.example.alien_letter_service.entity.Title;
 import com.example.alien_letter_service.mapper.AlienLetterMapper;
 import com.example.alien_letter_service.model.AlienLetter;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -15,6 +16,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -50,7 +52,16 @@ class XmlLetterConverterServiceTest {
     void generateFormattedLetterTest() throws IOException {
         // Arrange
         AlienLetter alienLetter = new AlienLetter();
-        FormattedAlienLetterDto expectedDto = new FormattedAlienLetterDto();
+
+        FormattedAlienLetterDto expectedDto = FormattedAlienLetterDto.builder()
+                .address("Address")
+                .uid("Uid")
+                .title(new Title())
+                .authors(List.of())
+                .createdAt("now")
+                .listOfParagraphs(List.of())
+                .phone("123456789")
+                .build();
 
         when(xmlMapper.readValue(any(File.class), eq(AlienLetter.class))).thenReturn(alienLetter);
         when(alienLetterMapper.toAlienLetterDto(alienLetter)).thenReturn(expectedDto);

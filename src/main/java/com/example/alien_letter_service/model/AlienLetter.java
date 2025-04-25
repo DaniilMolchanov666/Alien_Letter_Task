@@ -32,7 +32,7 @@ import java.util.List;
 public class AlienLetter {
 
     @JacksonXmlProperty(localName = "код_расы")
-    private Code raceCode;
+    private RaceCode raceCode;
 
     @JacksonXmlProperty(localName = "created")
     private Created created;
@@ -49,7 +49,7 @@ public class AlienLetter {
 
     @JacksonXmlRootElement(localName = "код_расы")
     @Data
-    public static class Code {
+    public static class RaceCode {
         @JacksonXmlProperty(localName = "value")
         private String value;
     }
@@ -66,6 +66,13 @@ public class AlienLetter {
     public static class Uid {
         @JacksonXmlProperty(localName = "code")
         private Code code;
+    }
+
+    @JacksonXmlRootElement(localName = "code")
+    @Data
+    public static class Code {
+        @JacksonXmlProperty(localName = "value")
+        private String value;
     }
 
     @JacksonXmlRootElement(localName = "author")
