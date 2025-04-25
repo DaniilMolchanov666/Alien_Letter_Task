@@ -44,7 +44,7 @@ public abstract class AlienLetterMapper {
     @Mapping(target = "authors", source = "authors")
     @Mapping(target = "address", source = "document.address.value")
     @Mapping(target = "phone", source = "document.telephone.value", qualifiedByName = "formatPhone")
-    @Mapping(target = "createdAt", source = "created.dateTime", dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX")
+    @Mapping(target = "createdAt", source = "created.dateTime", qualifiedByName = "formatAndIncrementDate")
     @Mapping(target = "listOfParagraphs", source = "document.text", qualifiedByName = "formatParagraphs")
     public abstract FormattedAlienLetterDto toAlienLetterDto(AlienLetter alienLetter);
 }

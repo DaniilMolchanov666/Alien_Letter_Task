@@ -29,7 +29,7 @@ public class FormattedAlienLetterDto {
 
     private String uid;
 
-    private LocalDateTime createdAt;
+    private String createdAt;
 
     private List<Author> authors;
 

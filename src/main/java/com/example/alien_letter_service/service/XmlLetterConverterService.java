@@ -18,7 +18,6 @@ import java.io.IOException;
  *
  * @author Daniil Molchanov
  * @version 1.1
- * @since 2024-07-20
  */
 @Service
 @RequiredArgsConstructor

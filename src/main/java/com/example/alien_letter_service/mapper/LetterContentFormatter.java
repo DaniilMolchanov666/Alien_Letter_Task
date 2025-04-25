@@ -4,11 +4,13 @@ import com.example.alien_letter_service.entity.Author;
 import com.example.alien_letter_service.entity.Title;
 import com.example.alien_letter_service.model.AlienLetter;
 import com.example.alien_letter_service.service.AuthorService;
+import com.example.alien_letter_service.util.DateTimeConverter;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.Named;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +37,7 @@ public class LetterContentFormatter {
 
     private static final String FAREWELL_MESSAGE = """
             Надеюсь, это поможет Вам. Если у Вас есть какие-либо дополнительные вопросы,
-            пожалуйста, не стесняйтесь спрашивать. С уважением, Земляне!"
+            пожалуйста, не стесняйтесь спрашивать. С уважением, Земляне!
             """;
 
     /**
@@ -72,6 +74,17 @@ public class LetterContentFormatter {
     }
 
     /**
+     * Приводит дату к формату yyyy-MM-dd_HH:mm и увеличивает год, месяц и день на 1
+     *
+     * @param date - дата из источника
+     * @return - отформатированная дата
+     */
+    @Named("formatAndIncrementDate")
+    public String getIncrementedFormattedDate(String date) {
+        return DateTimeConverter.convertAndAddTime(date);
+    }
+
+    /**
      * Разбивает текст на параграфы и заменяет приветствие
      *
      * @param text исходный текст
@@ -79,13 +92,11 @@ public class LetterContentFormatter {
      */
     @Named("formatParagraphs")
     public List<String> toFormattedParagraphs(String text) {
-        List<String> paragraphs = Arrays.stream(text.split("\n"))
+        String textWithFarewellMessage = text + FAREWELL_MESSAGE.replace("\n", "");
+        return Arrays.stream(textWithFarewellMessage.trim().split("\n"))
                 .filter(StringUtils::isNotEmpty)
                 .map(this::replaceGreeting)
                 .collect(Collectors.toCollection(ArrayList::new));
-
-        paragraphs.add(FAREWELL_MESSAGE);
-        return paragraphs;
     }
 
     /**
@@ -93,7 +104,7 @@ public class LetterContentFormatter {
      * @return приветствие распознанной расы
      */
     private String replaceGreeting(String line) {
-        if (line.trim().startsWith("Здравствуйте")) {
+        if (line.startsWith("Здравствуйте")) {
             return LANGUAGE_GREETINGS.keySet().stream()
                     .filter(keyword -> StringUtils.containsIgnoreCase(line, keyword))
                     .findFirst()
