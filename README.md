@@ -70,7 +70,6 @@ letter_file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<template xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
    <letter>
       <title>
          <description>Официальное письмо народу Татуина от землян</description>
@@ -141,5 +140,4 @@ letter_file:
 
       <sent_time>2025-04-25 16:24</sent_time>
    </letter>
-</template>
 ```

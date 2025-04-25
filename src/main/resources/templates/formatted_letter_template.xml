@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <letter xmlns:th="http://www.thymeleaf.org">
-        <title>
-            <description>Официальное письмо народу Татуина от землян</description>
+<letter xmlns:th="http://www.thymeleaf.org">
+    <title>
+        <description>Официальное письмо народу Татуина от землян</description>
 
-            <theme th:text="${data.title.theme}"/>
+        <theme th:text="${data.title.theme}"/>
 
-            <alien_race th:code="${data.title.code}"/>
+        <alien_race th:code="${data.title.code}"/>
 
-            <created th:text="${data.createdAt}"/>
+        <created th:text="${data.createdAt}"/>
 
-            <id description="Идентификатор письма" th:value="${data.uid}"/>
+        <id description="Идентификатор письма" th:value="${data.uid}"/>
 
-            <authors>
-                <employee th:each="author : ${data.authors}">
-                    <name th:utext="${author.name}"/>
-                    <second_name th:utext="${author.surName}"/>
-                    <lastname th:utext="${author.lastName}"/>
-                    <position th:utext="${author.position.positionName}"/>
-                </employee>
-            </authors>
-        </title>
+        <authors>
+            <employee th:each="author : ${data.authors}">
+                <name th:utext="${author.name}"/>
+                <second_name th:utext="${author.surName}"/>
+                <lastname th:utext="${author.lastName}"/>
+                <position th:utext="${author.position.positionName}"/>
+            </employee>
+        </authors>
+    </title>
 
-        <message>
-            <th:block th:each="paragraph, i : ${data.listOfParagraphs}">
-                <paragraph>
-                    <th:block th:utext="${paragraph}"/>
-                </paragraph>
-            </th:block>
-        </message>
+    <message>
+        <th:block th:each="paragraph, i : ${data.listOfParagraphs}">
+            <paragraph>
+                <th:block th:utext="${paragraph}"/>
+            </paragraph>
+        </th:block>
+    </message>
 
-        <contacts>
-            <tel th:number="${data.phone}"/>
-            <address th:description="${data.address}"/>
-        </contacts>
+    <contacts>
+        <tel th:number="${data.phone}"/>
+        <address th:description="${data.address}"/>
+    </contacts>
 
-        <sent_time th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}"/>
-    </letter>
-</template>
+    <sent_time th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}"/>
+</letter>

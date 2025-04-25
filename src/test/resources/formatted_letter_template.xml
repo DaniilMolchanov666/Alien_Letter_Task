@@ -2,11 +2,12 @@
 <letter xmlns:th="http://www.thymeleaf.org">
     <title>
         <description>Официальное письмо народу Татуина от землян</description>
-        <theme th:utext="${data.title.theme}"/>
+
+        <theme th:text="${data.title.theme}"/>
 
         <alien_race th:code="${data.title.code}"/>
 
-        <created th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd_HH:mm')}"/>
+        <created th:text="${data.createdAt}"/>
 
         <id description="Идентификатор письма" th:value="${data.uid}"/>
 
@@ -21,13 +22,17 @@
     </title>
 
     <message>
-        <paragraph th:each="paragraph : ${data.listOfParagraphs}" th:utext="${paragraph}"/>
+        <th:block th:each="paragraph, i : ${data.listOfParagraphs}">
+            <paragraph>
+                <th:block th:utext="${paragraph}"/>
+            </paragraph>
+        </th:block>
     </message>
 
     <contacts>
         <tel th:number="${data.phone}"/>
-        <address th:utext="'description=&quot;' + ${data.address} + '&quot;'" />
+        <address th:description="${data.address}"/>
     </contacts>
 
-    <sent_time th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd HH:mm')}"/>
+    <sent_time th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}"/>
 </letter>
