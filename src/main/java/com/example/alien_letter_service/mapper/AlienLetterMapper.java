@@ -1,7 +1,7 @@
 package com.example.alien_letter_service.mapper;
 
-import com.example.alien_letter_service.model.AlienLetter;
 import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
+import com.example.alien_letter_service.model.AlienLetter;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -34,7 +34,7 @@ public abstract class AlienLetterMapper {
     protected LetterContentFormatter letterContentConverter;
 
     /**
-     * Преобразует AlienLetter в FormattedAlienLetterDto
+     * Преобразует AlienLetter в FormattedAlienLetterDto.
      *
      * @param alienLetter исходное письмо
      * @return форматированное DTO письма

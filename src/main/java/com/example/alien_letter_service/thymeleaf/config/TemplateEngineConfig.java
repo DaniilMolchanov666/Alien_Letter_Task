@@ -25,18 +25,20 @@ public class TemplateEngineConfig {
      * Создает и настраивает движок шаблонов Thymeleaf.
      *
      * @param classLoaderTemplateResolver резолвер шаблонов
+     * @param alienDialect - кастомный диалект
      * @return Настроенный SpringTemplateEngine со следующими параметрами:
-     * <ul>
-     *   <li>Включен компилятор Spring EL</li>
-     *   <li>Установлен переданный резолвер шаблонов</li>
-     *   <li>Включено отображение скрытых маркеров перед чекбоксами</li>
-     * </ul>
+     *         <ul>
+     *           <li>Включен компилятор Spring EL</li>
+     *           <li>Установлен переданный резолвер шаблонов</li>
+     *           <li>Включено отображение скрытых маркеров перед чекбоксами</li>
+     *         </ul>
      */
     @Bean
-    public SpringTemplateEngine templateEngine(ClassLoaderTemplateResolver classLoaderTemplateResolver, AlienDialect themeDialect) {
+    public SpringTemplateEngine templateEngine(ClassLoaderTemplateResolver classLoaderTemplateResolver, AlienDialect alienDialect) {
         SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
         springTemplateEngine.setEnableSpringELCompiler(true);
-        springTemplateEngine.addDialect(themeDialect);
+
+        springTemplateEngine.addDialect(alienDialect);
         springTemplateEngine.setRenderHiddenMarkersBeforeCheckboxes(true);
         springTemplateEngine.setTemplateResolver(classLoaderTemplateResolver);
         return springTemplateEngine;
@@ -47,7 +49,7 @@ public class TemplateEngineConfig {
      * @return оъьект AlienDialect
      */
     @Bean
-    public AlienDialect themeDialect() {
+    public AlienDialect alienDialect() {
         return new AlienDialect();
     }
 

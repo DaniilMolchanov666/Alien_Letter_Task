@@ -25,7 +25,7 @@ public class AuthorService {
     private final TitleRepository titleRepository;
 
     /**
-     * Находит автора по ID
+     * Находит автора по ID.
      *
      * @param id идентификатор автора
      * @return найденный {@link Author}
@@ -37,7 +37,7 @@ public class AuthorService {
     }
 
     /**
-     * Находит заголовок по коду
+     * Находит заголовок по коду.
      *
      * @param code код заголовка
      * @return найденный {@link Title}

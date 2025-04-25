@@ -12,8 +12,8 @@ import java.util.Set;
  * Регистрирует процессоры для преобразования Thymeleaf-атрибутов в чистые XML-атрибуты
  * для определенных тегов. Поддерживает следующие преобразования:
  * <ul>
- *   <li>{@code <address th:description="...">} → {@code <address description="..."/>}</li>
- *   <li>{@code <theme th:text="...">} → {@code <theme text="..."/>}</li>
+ *   <li>{@code <address th:description="..."/>} → {@code <address description="..."/>}</li>
+ *   <li>{@code <theme th:text="..."/>} → {@code <theme text="..."/>}</li>
  * </ul>
  *
  * @author Daniil Molchanov

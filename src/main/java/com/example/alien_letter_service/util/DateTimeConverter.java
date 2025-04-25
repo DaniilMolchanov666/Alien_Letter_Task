@@ -28,7 +28,7 @@ public class DateTimeConverter {
             DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm");
 
     /**
-     * Преобразует дату и увеличивает на 1 год, 1 месяц и 1 день
+     * Преобразует дату и увеличивает на 1 год, 1 месяц и 1 день.
      * @param inputDate строка с датой в формате yyyy-MM-dd'T'HH:mm:ssXXX
      * @return строка с датой в формате yyyy-MM-dd_HH:mm (+1 год, +1 месяц, +1 день)
      * @throws DateTimeParseException если входная строка имеет неверный формат

@@ -1,8 +1,8 @@
 package com.example.alien_letter_service.service;
 
+import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
 import com.example.alien_letter_service.mapper.AlienLetterMapper;
 import com.example.alien_letter_service.model.AlienLetter;
-import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -29,7 +28,7 @@ public class XmlLetterConverterService {
     private final XmlMapper xmlMapper;
 
     /**
-    * Путь к не отформатированному файлу письма, указанному в application файле
+     * Путь к не отформатированному файлу письма, указанному в application файле.
      */
     @Value("${letter_file.path}")
     private String filePath;

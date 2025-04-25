@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class XmlController {
 
     /**
-     * Сервис для преобразования данных в формат письма
+     * Сервис для преобразования данных в формат письма.
      */
     private final XmlLetterConverterService letterConverterService;
 

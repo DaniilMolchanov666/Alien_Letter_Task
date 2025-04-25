@@ -27,6 +27,7 @@
 		<lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
 		<simple-xml.version>2.7.1</simple-xml.version>
 		<apache-commons.version>3.17.0</apache-commons.version>
+		<checkstyle-maven-plugin.version>3.6.0</checkstyle-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -124,6 +125,33 @@
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<configLocation>/checkstyle/checkstyle.xml</configLocation>
+					<consoleOutput>true</consoleOutput>
+					<failsOnError>true</failsOnError>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+
+					<execution>
+						<id>checkstyle</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>

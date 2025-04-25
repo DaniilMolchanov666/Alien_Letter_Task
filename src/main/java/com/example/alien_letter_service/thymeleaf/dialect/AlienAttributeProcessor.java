@@ -67,7 +67,6 @@ public class AlienAttributeProcessor extends AbstractAttributeTagProcessor {
         structureHandler.replaceWith(formattedAttributeValue, false);
     }
 
-
     /**
      * Форматирует значение атрибута в валидный XML-тег.
      *

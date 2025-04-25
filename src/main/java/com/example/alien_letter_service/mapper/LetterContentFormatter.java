@@ -10,7 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.mapstruct.Named;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +26,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class LetterContentFormatter {
-    private final AuthorService authorService;
 
     private static final Map<String, String> LANGUAGE_GREETINGS = Map.of(
             "татуин", "Dif-tor heh smusma",
@@ -40,8 +38,12 @@ public class LetterContentFormatter {
             пожалуйста, не стесняйтесь спрашивать. С уважением, Земляне!
             """;
 
+    private static final String HUMAN_GREETING = "Здравствуйте";
+
+    private final AuthorService authorService;
+
     /**
-     * Получает заголовок по коду расы
+     * Получает заголовок по коду расы.
      *
      * @param code код расы
      * @return объект {@link Title}
@@ -51,7 +53,7 @@ public class LetterContentFormatter {
     }
 
     /**
-     * Преобразует список AuthorId в список Author
+     * Преобразует список AuthorId в список Author.
      *
      * @param authorIds список идентификаторов авторов
      * @return список {@link Author}
@@ -63,7 +65,7 @@ public class LetterContentFormatter {
     }
 
     /**
-     * Форматирует номер телефона (удаляет все символы кроме цифр)
+     * Форматирует номер телефона (удаляет все символы кроме цифр).
      *
      * @param phone исходный номер телефона
      * @return отформатированный номер
@@ -74,7 +76,7 @@ public class LetterContentFormatter {
     }
 
     /**
-     * Приводит дату к формату yyyy-MM-dd_HH:mm и увеличивает год, месяц и день на 1
+     * Приводит дату к формату yyyy-MM-dd_HH:mm и увеличивает год, месяц и день на 1.
      *
      * @param date - дата из источника
      * @return - отформатированная дата
@@ -85,7 +87,7 @@ public class LetterContentFormatter {
     }
 
     /**
-     * Разбивает текст на параграфы и заменяет приветствие
+     * Разбивает текст на параграфы и заменяет приветствие.
      *
      * @param text исходный текст
      * @return список отформатированных параграфов
@@ -100,15 +102,15 @@ public class LetterContentFormatter {
     }
 
     /**
-     * Заменяет стандартное приветствие человека на пришельцев
+     * Заменяет стандартное приветствие человека на пришельцев.
      * @return приветствие распознанной расы
      */
     private String replaceGreeting(String line) {
-        if (line.startsWith("Здравствуйте")) {
+        if (line.startsWith(HUMAN_GREETING)) {
             return LANGUAGE_GREETINGS.keySet().stream()
                     .filter(keyword -> StringUtils.containsIgnoreCase(line, keyword))
                     .findFirst()
-                    .map(keyword -> line.replace("Здравствуйте", LANGUAGE_GREETINGS.get(keyword)))
+                    .map(keyword -> line.replace(HUMAN_GREETING, LANGUAGE_GREETINGS.get(keyword)))
                     .orElse(line);
         }
         return line;

@@ -12,6 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AlienLetterServiceApplication {
 
+    /**
+     * Основной main метод для запуска приложения.
+     * @param args - массив аргументов
+     */
     public static void main(String[] args) {
         SpringApplication.run(AlienLetterServiceApplication.class, args);
     }
