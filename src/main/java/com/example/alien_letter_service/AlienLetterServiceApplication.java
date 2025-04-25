@@ -1,4 +1,4 @@
-package com.example.lanit_test_task;
+package com.example.alien_letter_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  */
 @SpringBootApplication
-public class LanitTestTaskApplication {
+public class AlienLetterServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LanitTestTaskApplication.class, args);
+        SpringApplication.run(AlienLetterServiceApplication.class, args);
     }
 }

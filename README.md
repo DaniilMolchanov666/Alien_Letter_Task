@@ -64,4 +64,67 @@ letter_file:
   path: ${LETTER_FILE_PATH:src/main/resources/templates/alien_letter.xml}
 ```
 
+## Демонстрация
 
+При выполнении POST-запроса в Postman по адресу http://localhost:8080/getLetter
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+   <letter>
+      <title>
+         <description>Официальное письмо народу Татуина от землян</description>
+
+         <theme text="Озеленение пустыни" />
+
+         <alien_race code="A2" />
+
+         <created>2022-01-20_16:45</created>
+
+         <id description="Идентификатор письма" value="c36ba6b0-951d-4b16-8bff-4ac3abb0dc59" />
+
+         <authors>
+            <employee>
+               <name>Иван</name>
+               <second_name>Иванович</second_name>
+               <lastname>Иванов</lastname>
+               <position>Старший научный сотрудник по добыче полезных ископаемых</position>
+            </employee>
+            <employee>
+               <name>Наталья</name>
+               <second_name>Николаевна</second_name>
+               <lastname>Сидорова</lastname>
+               <position>Директор департамента озеленения пустынь</position>
+            </employee>
+            <employee>
+               <name>Перт</name>
+               <second_name>Петрович</second_name>
+               <lastname>Петров</lastname>
+               <position>Главный инженер по строительству межзвездных автострад</position>
+            </employee>
+         </authors>
+      </title>
+
+      <message>
+         <paragraph> Dif-tor heh smusma, уважаемые правители Татуина!</paragraph>
+         <paragraph> Мы предлагаем Вам наши услуги по озеленению Вашей планеты. Наша компания имеет большой опыт в
+            этой области, и мы готовы предоставить Вам наши знания и ресурсы для достижения Вашей цели.</paragraph>
+         <paragraph> Для озеленения планеты используются различные ресурсы, такие как вода, почва, семена и
+            удобрения. В зависимости от условий на планете могут использоваться различные методы озеленения.
+            Например, на пустынных планетах могут использоваться специальные технологии для выращивания деревьев в
+            засушливых условиях, различные овощи и фрукты, которые обладают способностью противостоять экстремальным
+            климатическим явлениям.</paragraph>
+         <paragraph>Надеюсь, это поможет Вам. Если у Вас есть какие-либо дополнительные вопросы,
+            пожалуйста, не стесняйтесь спрашивать. С уважением, Земляне!"
+         </paragraph>
+      </message>
+
+      <contacts>
+         <tel number="8475861724" />
+         <address description="Планета Земля" />
+      </contacts>
+
+      <sent_time>2022-01-20 16:45</sent_time>
+   </letter>
+</template>
+```

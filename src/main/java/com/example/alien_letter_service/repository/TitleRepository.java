@@ -1,6 +1,6 @@
-package com.example.lanit_test_task.repository;
+package com.example.alien_letter_service.repository;
 
-import com.example.lanit_test_task.entity.Title;
+import com.example.alien_letter_service.entity.Title;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

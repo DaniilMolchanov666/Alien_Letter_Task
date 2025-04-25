@@ -1,9 +1,9 @@
-package com.example.lanit_test_task.service;
+package com.example.alien_letter_service.service;
 
-import com.example.lanit_test_task.entity.Author;
-import com.example.lanit_test_task.entity.Title;
-import com.example.lanit_test_task.repository.AuthorRepository;
-import com.example.lanit_test_task.repository.TitleRepository;
+import com.example.alien_letter_service.entity.Author;
+import com.example.alien_letter_service.entity.Title;
+import com.example.alien_letter_service.repository.AuthorRepository;
+import com.example.alien_letter_service.repository.TitleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

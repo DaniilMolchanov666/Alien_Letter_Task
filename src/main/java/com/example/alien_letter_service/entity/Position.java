@@ -1,9 +1,10 @@
-package com.example.lanit_test_task.entity;
+package com.example.alien_letter_service.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "position")
+@AllArgsConstructor
 @NoArgsConstructor
 public class Position {
 

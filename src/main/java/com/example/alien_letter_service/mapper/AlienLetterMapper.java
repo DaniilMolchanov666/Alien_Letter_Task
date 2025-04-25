@@ -1,7 +1,7 @@
-package com.example.lanit_test_task.mapper;
+package com.example.alien_letter_service.mapper;
 
-import com.example.lanit_test_task.model.AlienLetter;
-import com.example.lanit_test_task.dto.FormattedAlienLetterDto;
+import com.example.alien_letter_service.model.AlienLetter;
+import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -43,8 +43,8 @@ public abstract class AlienLetterMapper {
     @Mapping(target = "uid", source = "uid.code.value")
     @Mapping(target = "authors", source = "authors")
     @Mapping(target = "address", source = "document.address.value")
-    @Mapping(target = "phone", source = "document.telephone.value")
+    @Mapping(target = "phone", source = "document.telephone.value", qualifiedByName = "formatPhone")
     @Mapping(target = "createdAt", source = "created.dateTime", dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX")
-    @Mapping(target = "listOfParagraphs", source = "document.text")
+    @Mapping(target = "listOfParagraphs", source = "document.text", qualifiedByName = "formatParagraphs")
     public abstract FormattedAlienLetterDto toAlienLetterDto(AlienLetter alienLetter);
 }

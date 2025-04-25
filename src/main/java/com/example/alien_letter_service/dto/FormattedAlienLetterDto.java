@@ -1,7 +1,7 @@
-package com.example.lanit_test_task.dto;
+package com.example.alien_letter_service.dto;
 
-import com.example.lanit_test_task.entity.Author;
-import com.example.lanit_test_task.entity.Title;
+import com.example.alien_letter_service.entity.Author;
+import com.example.alien_letter_service.entity.Title;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -21,7 +21,6 @@ import java.util.List;
  *
  * @author Daniil Molchanov
  * @version 1.0
- * @since 2024-07-20
  */
 @Data
 public class FormattedAlienLetterDto {

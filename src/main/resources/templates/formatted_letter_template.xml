@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<letter xmlns:th="http://www.thymeleaf.org">
-    <title>
-        <description>Официальное письмо народу Татуина от землян</description>
-        <theme th:utext="${data.title.theme}"/>
+<template xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <letter xmlns:th="http://www.thymeleaf.org">
+        <title>
+            <description>Официальное письмо народу Татуина от землян</description>
 
-        <alien_race th:code="${data.title.code}"/>
+            <theme th:text="${data.title.theme}"/>
 
-        <created th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd_HH:mm')}"/>
+            <alien_race th:code="${data.title.code}"/>
 
-        <id description="Идентификатор письма" th:value="${data.uid}"/>
+            <created th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd_HH:mm')}"/>
 
-        <authors>
-            <employee th:each="author : ${data.authors}">
-                <name th:utext="${author.name}"/>
-                <second_name th:utext="${author.surName}"/>
-                <lastname th:utext="${author.lastName}"/>
-                <position th:utext="${author.position.positionName}"/>
-            </employee>
-        </authors>
-    </title>
+            <id description="Идентификатор письма" th:value="${data.uid}"/>
 
-    <message>
-        <paragraph th:each="paragraph : ${data.listOfParagraphs}" th:utext="${paragraph}"/>
-    </message>
+            <authors>
+                <employee th:each="author : ${data.authors}">
+                    <name th:utext="${author.name}"/>
+                    <second_name th:utext="${author.surName}"/>
+                    <lastname th:utext="${author.lastName}"/>
+                    <position th:utext="${author.position.positionName}"/>
+                </employee>
+            </authors>
+        </title>
 
-    <contacts>
-        <tel th:number="${data.phone}"/>
-        <address th:description="${data.address}"/>
-    </contacts>
+        <message>
+            <paragraph th:each="paragraph : ${data.listOfParagraphs}" th:utext="${paragraph}"/>
+        </message>
 
-    <sent_time th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd HH:mm')}"/>
-</letter>
+        <contacts>
+            <tel th:number="${data.phone}"/>
+            <address th:description="${data.address}"/>
+        </contacts>
+
+        <sent_time th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd HH:mm')}"/>
+    </letter>
+</template>

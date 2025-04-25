@@ -1,11 +1,11 @@
 spring:
   application:
-    name: lanit_test_task
+    name: alien_letter_service
 
   datasource:
     url: jdbc:h2:mem:testdb
     username: sa
-    password: password
+    password:
     driver-class-name: org.h2.Driver
 
   h2:

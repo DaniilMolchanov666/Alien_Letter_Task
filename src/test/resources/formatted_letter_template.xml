@@ -26,7 +26,7 @@
 
     <contacts>
         <tel th:number="${data.phone}"/>
-        <address th:description="${data.address}"/>
+        <address th:utext="'description=&quot;' + ${data.address} + '&quot;'" />
     </contacts>
 
     <sent_time th:text="${#temporals.format(data.createdAt, 'yyyy-MM-dd HH:mm')}"/>

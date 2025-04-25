@@ -1,11 +1,12 @@
-package com.example.lanit_test_task.mapper;
+package com.example.alien_letter_service.mapper;
 
-import com.example.lanit_test_task.model.AlienLetter;
-import com.example.lanit_test_task.entity.Author;
-import com.example.lanit_test_task.entity.Title;
-import com.example.lanit_test_task.service.AuthorService;
+import com.example.alien_letter_service.entity.Author;
+import com.example.alien_letter_service.entity.Title;
+import com.example.alien_letter_service.model.AlienLetter;
+import com.example.alien_letter_service.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.mapstruct.Named;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -60,13 +61,14 @@ public class LetterContentFormatter {
     }
 
     /**
-     * Форматирует номер телефона (удаляет скобки и дефисы)
+     * Форматирует номер телефона (удаляет все символы кроме цифр)
      *
      * @param phone исходный номер телефона
      * @return отформатированный номер
      */
+    @Named("formatPhone")
     public String getFormattedPhoneNumber(String phone) {
-        return phone.replaceAll("[()-]", "").trim();
+        return phone.replaceAll("[^0-9]", "").trim();
     }
 
     /**
@@ -75,13 +77,14 @@ public class LetterContentFormatter {
      * @param text исходный текст
      * @return список отформатированных параграфов
      */
+    @Named("formatParagraphs")
     public List<String> toFormattedParagraphs(String text) {
         List<String> paragraphs = Arrays.stream(text.split("\n"))
                 .filter(StringUtils::isNotEmpty)
                 .map(this::replaceGreeting)
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        paragraphs.add(FAREWELL_MESSAGE.trim());
+        paragraphs.add(FAREWELL_MESSAGE);
         return paragraphs;
     }
 

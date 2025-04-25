@@ -1,8 +1,8 @@
-package com.example.lanit_test_task.service;
+package com.example.alien_letter_service.service;
 
-import com.example.lanit_test_task.mapper.AlienLetterMapper;
-import com.example.lanit_test_task.model.AlienLetter;
-import com.example.lanit_test_task.dto.FormattedAlienLetterDto;
+import com.example.alien_letter_service.mapper.AlienLetterMapper;
+import com.example.alien_letter_service.model.AlienLetter;
+import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -39,11 +40,21 @@ public class XmlLetterConverterService {
      *
      * @return форматированный DTO письма
      * @throws RuntimeException если произошла ошибка при чтении или конвертации файла
-     * @throws NullPointerException если файл не найден
+     * @throws NullPointerException если файл не найден или указан неправильный путь
      */
     public FormattedAlienLetterDto getFormattedAlienLetterDto() {
+        if (filePath == null || filePath.isBlank()) {
+            throw new NullPointerException("Путь к файлу не указан");
+        }
+
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            throw new NullPointerException(String.format("Файл не найден: %s", filePath));
+        }
+
         try {
-            AlienLetter alienLetter = xmlMapper.readValue(new File(filePath), AlienLetter.class);
+            AlienLetter alienLetter = xmlMapper.readValue(file, AlienLetter.class);
             FormattedAlienLetterDto dto = alienLetterMapper.toAlienLetterDto(alienLetter);
 
             log.info("Успешная конвертация письма. Содержание письма: {}", dto);
@@ -52,8 +63,6 @@ public class XmlLetterConverterService {
 
         } catch (IOException e) {
             throw new RuntimeException(String.format("Ошибка чтения файла с письмом: %s", e.getMessage()));
-        } catch (NullPointerException e) {
-            throw new NullPointerException(String.format("Файл не найден или недоступен:%s", filePath));
         }
     }
 }

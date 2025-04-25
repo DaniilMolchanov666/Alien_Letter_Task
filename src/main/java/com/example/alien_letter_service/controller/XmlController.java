@@ -1,25 +1,26 @@
-package com.example.lanit_test_task.controller;
+package com.example.alien_letter_service.controller;
 
-import com.example.lanit_test_task.dto.FormattedAlienLetterDto;
-import com.example.lanit_test_task.service.XmlLetterConverterService;
+import com.example.alien_letter_service.dto.FormattedAlienLetterDto;
+import com.example.alien_letter_service.service.XmlLetterConverterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Контроллер для генерации отформатированных XML-писем инопланетянам.
  *
  * @author Daniil Molchanov
  * @version 1.0
- * @since 2024-07-20
  *
  * @see XmlLetterConverterService
  * @see FormattedAlienLetterDto
  */
 @Controller
+@RequestMapping("/getLetter")
 @RequiredArgsConstructor
 @Slf4j
 public class XmlController {
@@ -35,7 +36,7 @@ public class XmlController {
      * @param model Модель Spring для передачи данных в представление
      * @return Шаблон Thymeleaf
      */
-    @PostMapping(value = "/getLetter", produces = MediaType.APPLICATION_XML_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public String generateLetter(Model model) {
         FormattedAlienLetterDto alienLetterDto = letterConverterService.getFormattedAlienLetterDto();
         log.info("Получено отформатированное письмо для пришельцев! {}", alienLetterDto);

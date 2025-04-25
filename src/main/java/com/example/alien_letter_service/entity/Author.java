@@ -1,4 +1,4 @@
-package com.example.lanit_test_task.entity;
+package com.example.alien_letter_service.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
